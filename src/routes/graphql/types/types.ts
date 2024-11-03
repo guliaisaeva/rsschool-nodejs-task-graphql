@@ -108,12 +108,32 @@ export const ChangePostInput = new GraphQLInputObjectType({
   },
 });
 
+export const CreatePostInput = new GraphQLInputObjectType({
+  name: 'CreatePostInput',
+  fields: {
+    title: { type: new GraphQLNonNull(GraphQLString) },
+    content: { type: new GraphQLNonNull(GraphQLString) },
+    authorId: { type: new GraphQLNonNull(UUIDType) },
+  },
+});
+
 export const ChangeProfileInput = new GraphQLInputObjectType({
   name: 'ChangeProfileInput',
   fields: {
+    userId: { type: UUIDType },
+    memberTypeId: { type: MemberTypeId },
     isMale: { type: GraphQLBoolean },
     yearOfBirth: { type: GraphQLInt },
-    memberTypeId: { type: MemberTypeId },
+  },
+});
+
+export const CreateProfileInput = new GraphQLInputObjectType({
+  name: 'CreateProfileInput',
+  fields: {
+    userId: { type: new GraphQLNonNull(UUIDType) },
+    memberTypeId: { type: new GraphQLNonNull(MemberTypeId) },
+    isMale: { type: GraphQLBoolean },
+    yearOfBirth: { type: GraphQLInt },
   },
 });
 
@@ -124,22 +144,10 @@ export const ChangeUserInput = new GraphQLInputObjectType({
     balance: { type: GraphQLFloat },
   },
 });
-
-export const CreatePostInput = new GraphQLInputObjectType({
-  name: 'CreatePostInput',
-  fields: {
-    title: { type: new GraphQLNonNull(GraphQLString) },
-    content: { type: new GraphQLNonNull(GraphQLString) },
-    authorId: { type: new GraphQLNonNull(UUIDType) },
-  },
-});
-
 export const CreateUserInput = new GraphQLInputObjectType({
   name: 'CreateUserInput',
   fields: {
-    username: { type: GraphQLString },
-    email: { type: GraphQLString },
-    password: { type: GraphQLString },
-    // Add other fields as needed
+    name: { type: new GraphQLNonNull(GraphQLString) },
+    balance: { type: new GraphQLNonNull(GraphQLFloat) },
   },
 });

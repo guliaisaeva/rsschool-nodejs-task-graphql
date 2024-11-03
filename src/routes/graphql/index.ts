@@ -27,14 +27,13 @@ const plugin: FastifyPluginAsyncTypebox = async (fastify) => {
       });
 
       return result;
-      // return graphql();
     },
   });
 };
 
 const schema = new GraphQLSchema({
   query: RootQuery,
-  // mutation: RootMutation,
+  mutation: RootMutation,
 });
 
 export default plugin;
