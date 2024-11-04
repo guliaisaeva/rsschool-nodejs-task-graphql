@@ -15,7 +15,7 @@ export const userSchema = Type.Object({
 export const getUserByIdSchema = {
   params: Type.Object(
     {
-      userId: userFields.id,
+      userId: userFields?.id,
     },
     {
       additionalProperties: false,
@@ -26,8 +26,8 @@ export const getUserByIdSchema = {
 export const createUserSchema = {
   body: Type.Object(
     {
-      name: userFields.name,
-      balance: userFields.balance,
+      name: userFields?.name,
+      balance: userFields?.balance,
     },
     {
       additionalProperties: false,
@@ -39,8 +39,8 @@ export const changeUserByIdSchema = {
   params: getUserByIdSchema.params,
   body: Type.Partial(
     Type.Object({
-      name: userFields.name,
-      balance: userFields.balance,
+      name: userFields?.name,
+      balance: userFields?.balance,
     }),
     {
       additionalProperties: false,
